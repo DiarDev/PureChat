@@ -27,6 +27,8 @@ class PureChat extends PluginBase
     # CheckConfig by fernanACM
     private const CONFIG_VERSION = "3.0.0-ACM";
 
+    private $tags = [];
+
     public function onLoad(): void{
         $this->saveDefaultConfig();
         $this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
@@ -42,6 +44,19 @@ class PureChat extends PluginBase
     }
 
     public function onEnable(): void{
+        $this->getScheduler()->scheduleRepeatingTask(new class($this) extends Task {
+            public function __construct(
+                private $plugin
+                ){}
+
+            public function onRun(): void {
+              foreach(\pocketmine\Server()::getInstance()->getOnlinePlayers() as $player) {
+                $plugin->tags[$player->getName()] = [
+                    "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTagOwner($player),
+                    "{tag}" => \Noob\Clan::getClan($player)
+                    ];
+           },20);
+        }
         $this->getLogger()->info("
   ____                           ____   _               _   
  |  _ \   _   _   _ __    ___   / ___| | |__     __ _  | |_ 
