@@ -15,6 +15,8 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
+use pocketmine\scheduler\Task;
+use pocketmine\utils\SingletonTrait;
 
 class PureChat extends PluginBase
 {
