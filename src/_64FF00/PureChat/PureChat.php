@@ -50,10 +50,10 @@ class PureChat extends PluginBase
                 ){}
 
             public function onRun(): void {
-              foreach(\pocketmine\Server()::getInstance()->getOnlinePlayers() as $player) {
+              foreach(\pocketmine\Server::getInstance()->getOnlinePlayers() as $player) {
                 $plugin->tags[$player->getName()] = [
                     "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTagOwner($player),
-                    "{tag}" => \Noob\Clan::getClan($player)
+                    "{clan}" => \Noob\Clan::getClan($player)
                     ];
            },20);
         }
@@ -362,6 +362,9 @@ class PureChat extends PluginBase
         $string = str_replace("{world}", ($WorldName === null ? "" : $WorldName), $string);
         $string = str_replace("{prefix}", $this->getPrefix($player, $WorldName), $string);
         $string = str_replace("{suffix}", $this->getSuffix($player, $WorldName), $string);
+        foreach($this->tags[$player->getName()] as $tag => $replace) {
+          $string = str_replace($tag, $replace, $string);
+        }
         return $string;
     }
 
