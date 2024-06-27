@@ -51,7 +51,7 @@ class PureChat extends PluginBase
 
             public function onRun(): void {
               foreach(\pocketmine\Server::getInstance()->getOnlinePlayers() as $player) {
-                $plugin->tags[$player->getName()] = [
+                $this->plugin->tags[$player->getName()] = [
                     "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTagOwner($player),
                     "{clan}" => \Noob\Clan::getClan($player)
                     ];
