@@ -29,7 +29,7 @@ class PureChat extends PluginBase
     # CheckConfig by fernanACM
     private const CONFIG_VERSION = "3.0.0-ACM";
 
-    private $tags = [];
+    public $tags = [];
 
     public function onLoad(): void{
         $this->saveDefaultConfig();
