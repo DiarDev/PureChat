@@ -367,7 +367,7 @@ class PureChat extends PluginBase
         $string = str_replace("{prefix}", $this->getPrefix($player, $WorldName), $string);
         $string = str_replace("{suffix}", $this->getSuffix($player, $WorldName), $string);
         foreach($this->tags[$player->getName()] as $tag => $replace) {
-          $string = str_replace($tag, $replace, $string);
+          $string = str_replace($tag, (string)$replace, $string);
         }
         return $string;
     }
