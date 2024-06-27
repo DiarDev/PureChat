@@ -58,7 +58,7 @@ class PureChat extends PluginBase
                 }
               }
            },20);
-        }
+        
         $this->getLogger()->info("
   ____                           ____   _               _   
  |  _ \   _   _   _ __    ___   / ___| | |__     __ _  | |_ 
