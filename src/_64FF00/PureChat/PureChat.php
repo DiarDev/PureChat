@@ -55,6 +55,7 @@ class PureChat extends PluginBase
                     "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTagOwner($player),
                     "{clan}" => \Noob\Clan::getClan($player)
                     ];
+                }
               }
            },20);
         }
