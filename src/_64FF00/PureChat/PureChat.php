@@ -17,7 +17,7 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\SingletonTrait;
-use vennv\vapm\{VapmPMMP,System}
+use vennv\vapm\{VapmPMMP,System};
 
 class PureChat extends PluginBase
 {
