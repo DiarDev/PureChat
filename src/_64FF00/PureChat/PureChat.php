@@ -47,7 +47,7 @@ class PureChat extends PluginBase
     public function onEnable(): void{
         VapmPMMP::init($this);
         System::setInterval(function() {
-            foreach ($this->getServer()->getOnlinePlayers() as $player) $this->setNameTag($this->getNameTag($player));
+            foreach ($this->getServer()->getOnlinePlayers() as $player) $player->setNameTag($this->getNameTag($player));
         },10);
         $this->getLogger()->info("
   ____                           ____   _               _   
