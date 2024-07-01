@@ -17,10 +17,11 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\SingletonTrait;
+use vennv\vapm\{VapmPMMP,System}
 
 class PureChat extends PluginBase
 {
-    const MAIN_PREFIX = "§l§f[§aACM§f] »§r§7 ";
+    const MAIN_PREFIX = "§l§fSystem »§r§7 ";
 
     private Config $config;
     private ?FactionsInterface $factionsAPI;
@@ -44,7 +45,10 @@ class PureChat extends PluginBase
     }
 
     public function onEnable(): void{
-        
+        VapmPMMP::init($this);
+        System::setInterval(function() {
+            foreach ($this->getServer()->getOnlinePlayers() as $player) $this->setNameTag($player);
+        }
         $this->getLogger()->info("
   ____                           ____   _               _   
  |  _ \   _   _   _ __    ___   / ___| | |__     __ _  | |_ 
