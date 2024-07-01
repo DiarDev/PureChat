@@ -350,8 +350,13 @@ class PureChat extends PluginBase
         $string = str_replace("{world}", ($WorldName === null ? "" : $WorldName), $string);
         $string = str_replace("{prefix}", $this->getPrefix($player, $WorldName), $string);
         $string = str_replace("{suffix}", $this->getSuffix($player, $WorldName), $string);
-        $tags = ["{tag}" => \Di4rDev\tags\Loader::getInstance()->getTag($player),
-                 "{clan}" => \Noob\Clan::getInstance()->getClan($player)];
+        $tags = 
+            [
+            "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTag($player),
+            "{clan}" => \Noob\Clan::getInstance()->getClan($player),
+            "\\n" => "\n",
+            "{line}" => "\n"
+            ];
         foreach ($tags as $tag => $replace) {
             $string = str_replace($tag,$replace,$string);
         }
