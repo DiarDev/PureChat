@@ -1,5 +1,5 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/fernanACM/PureChat
-build-by-default: true
+build-by-default: false
 branches:
 - PM5
 - PM4
