@@ -46,12 +46,20 @@ class PureChat extends PluginBase
     }
 
     public function onEnable(): void{
+        $this->getScheduler()->scheduleRepeatingTask(new class($this) extends Task {
+            public function __construct(
+                private $plugin
+                ){}
+
+            public function onRun(): void {
               foreach(\pocketmine\Server::getInstance()->getOnlinePlayers() as $player) {
                 $this->plugin->tags[$player->getName()] = [
                     "{tag}" => \Di4rDev\tags\Loader::getInstance()->getTag($player),
                     "{clan}" => \Noob\Clan::getInstance()->getClan($player)
                     ];
               }
+            }
+        },1);
         
         $this->getLogger()->info("
   ____                           ____   _               _   
